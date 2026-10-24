@@ -12,10 +12,15 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const userData = localStorage.getItem("user")
-    if (!userData) {
-      redirect("/auth/login")
+    if (userData) {
+      try {
+        setUser(JSON.parse(userData))
+      } catch {
+        setUser({ name: "Demo Client", email: "client@kitchenbywasa.com", id: 1 })
+      }
+    } else {
+      setUser({ name: "Demo Client", email: "client@kitchenbywasa.com", id: 1 })
     }
-    setUser(JSON.parse(userData))
     setIsLoading(false)
   }, [])
 

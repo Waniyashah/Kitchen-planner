@@ -17,10 +17,9 @@ export default function EmailAuthPage() {
   }
 
   return (
-    <div className="flex min-h-screen bg-white">
-      {/* Gray Sidebar */}
-      <div className="w-1/3 bg-[background: #00000080;
-] flex flex-col items-center justify-center p-8">
+    <div className="flex flex-col md:flex-row min-h-screen bg-white">
+      {/* Sidebar */}
+      <div className="w-full md:w-1/3 bg-gray-900 text-white flex flex-col items-center justify-center p-8">
         <div className="text-center">
           <button onClick={() => router.back()} className="inline-block mb-8 text-white hover:opacity-80">
             <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">

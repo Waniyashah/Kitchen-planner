@@ -3,6 +3,8 @@
 import type React from "react"
 
 import { useRef, useState } from "react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { usePlannerStore } from "@/lib/planner-store"
@@ -15,6 +17,7 @@ interface PlannerHeaderProps {
 }
 
 export function PlannerHeader({ activeStep = "define" }: PlannerHeaderProps) {
+  const router = useRouter()
   const { undo, redo, history, historyIndex, exportJSON, loadFromJSON, exportPNG, room } = usePlannerStore()
   const { toast } = useToast()
   const fileInputRef = useRef<HTMLInputElement>(null)
@@ -86,53 +89,51 @@ export function PlannerHeader({ activeStep = "define" }: PlannerHeaderProps) {
   }
 
   return (
-    <header className="flex h-16 items-center justify-between border-b border-[#dfdfdf] bg-white px-6">
-      <div className="flex items-center gap-16">
-        <div className="flex items-center h-12">
+    <header className="flex h-16 items-center justify-between border-b border-[#dfdfdf] bg-white px-4 sm:px-6 overflow-x-auto min-w-0">
+      <div className="flex items-center gap-6 sm:gap-10 lg:gap-16 flex-shrink-0">
+        <Link href="/" className="flex items-center h-12 flex-shrink-0" title="Back to Home">
           <Image
             src="/kitchen-by-wasa-logo.png"
             alt="Kitchen by Wasa"
             width={105}
             height={45}
-            className="object-contain"
+            className="object-contain cursor-pointer"
           />
-        </div>
+        </Link>
 
-        <nav className="flex items-center gap-6">
-          <div className={`pb-3 pt-3 ${activeStep === "define" ? "border-b-2 border-[#0051BA]" : ""}`}>
-            <span className={`text-base cursor-pointer hover:text-[#0051BA] ${activeStep === "define" ? "font-extrabold text-black" : "font-bold text-black"}`}>
+        <nav className="flex items-center gap-4 sm:gap-6">
+          <Link href="/define" className={`pb-3 pt-3 ${activeStep === "define" ? "border-b-2 border-[#0051BA]" : ""}`}>
+            <span className={`text-sm sm:text-base cursor-pointer hover:text-[#0051BA] whitespace-nowrap ${activeStep === "define" ? "font-extrabold text-black" : "font-bold text-black"}`}>
               Define your space
             </span>
-          </div>
-          <div className={`pb-3 pt-3 ${activeStep === "favourite" ? "border-b-2 border-[#0051BA]" : ""}`}>
-            <span className={`text-base cursor-pointer hover:text-[#0051BA] ${activeStep === "favourite" ? "font-extrabold text-black" : "font-bold text-black"}`}>
+          </Link>
+          <Link href="/summary" className={`pb-3 pt-3 ${activeStep === "favourite" ? "border-b-2 border-[#0051BA]" : ""}`}>
+            <span className={`text-sm sm:text-base cursor-pointer hover:text-[#0051BA] whitespace-nowrap ${activeStep === "favourite" ? "font-extrabold text-black" : "font-bold text-black"}`}>
               Choose a favourite
             </span>
-          </div>
-          <div className={`pb-3 pt-3 ${activeStep === "make-it-yours" ? "border-b-2 border-[#0051BA]" : ""}`}>
-            <a href="/make-it-yours">
-              <span className={`text-base cursor-pointer hover:text-[#0051BA] ${activeStep === "make-it-yours" ? "font-extrabold text-black" : "font-bold text-black"}`}>
-                Make it yours
-              </span>
-            </a>
-          </div>
-          <div className={`pb-3 pt-3 ${activeStep === "final" ? "border-b-2 border-[#0051BA]" : ""}`}>
-            <span className={`text-base cursor-pointer hover:text-[#0051BA] ${activeStep === "final" ? "font-extrabold text-black" : "font-bold text-black"}`}>
+          </Link>
+          <Link href="/make-it-yours" className={`pb-3 pt-3 ${activeStep === "make-it-yours" ? "border-b-2 border-[#0051BA]" : ""}`}>
+            <span className={`text-sm sm:text-base cursor-pointer hover:text-[#0051BA] whitespace-nowrap ${activeStep === "make-it-yours" ? "font-extrabold text-black" : "font-bold text-black"}`}>
+              Make it yours
+            </span>
+          </Link>
+          <Link href="/checkout" className={`pb-3 pt-3 ${activeStep === "final" ? "border-b-2 border-[#0051BA]" : ""}`}>
+            <span className={`text-sm sm:text-base cursor-pointer hover:text-[#0051BA] whitespace-nowrap ${activeStep === "final" ? "font-extrabold text-black" : "font-bold text-black"}`}>
               Make it happen
             </span>
-          </div>
+          </Link>
         </nav>
       </div>
 
-      <div className="flex items-center gap-4">
-        <div className="flex items-center gap-1 border-r border-[#dfdfdf] pr-4">
+      <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0 ml-4">
+        <div className="hidden sm:flex items-center gap-1 border-r border-[#dfdfdf] pr-3 sm:pr-4">
           <Button
             variant="ghost"
             size="icon"
             className="h-10 w-10 text-[#111] hover:bg-[#f5f5f5] hover:text-[#0051BA]"
             title="Edit project details"
           >
-            <FileEdit className="size-[25px]" />
+            <FileEdit className="size-[22px] sm:size-[25px]" />
           </Button>
           <Button
             variant="ghost"
@@ -140,7 +141,7 @@ export function PlannerHeader({ activeStep = "define" }: PlannerHeaderProps) {
             className="h-10 w-10 text-[#111] hover:bg-[#f5f5f5] hover:text-[#0051BA]"
             title="Project checklist"
           >
-            <ClipboardList className="size-[25px]" />
+            <ClipboardList className="size-[22px] sm:size-[25px]" />
           </Button>
           <Button
             variant="ghost"
@@ -148,11 +149,11 @@ export function PlannerHeader({ activeStep = "define" }: PlannerHeaderProps) {
             className="h-10 w-10 text-[#111] hover:bg-[#f5f5f5] hover:text-[#0051BA]"
             title="Refresh view"
           >
-            <RotateCw className="size-[25px]" />
+            <RotateCw className="size-[22px] sm:size-[25px]" />
           </Button>
         </div>
 
-        <div className="flex items-center gap-1 border-r border-[#dfdfdf] pr-4">
+        <div className="flex items-center gap-1 border-r border-[#dfdfdf] pr-3 sm:pr-4">
           <Button
             variant="ghost"
             size="icon"
@@ -161,7 +162,7 @@ export function PlannerHeader({ activeStep = "define" }: PlannerHeaderProps) {
             disabled={!canUndo}
             title="Undo"
           >
-            <Undo2 className="size-[25px]" />
+            <Undo2 className="size-[22px] sm:size-[25px]" />
           </Button>
           <Button
             variant="ghost"
@@ -171,7 +172,7 @@ export function PlannerHeader({ activeStep = "define" }: PlannerHeaderProps) {
             disabled={!canRedo}
             title="Redo"
           >
-            <Redo2 className="size-[25px]" />
+            <Redo2 className="size-[22px] sm:size-[25px]" />
           </Button>
         </div>
 
@@ -183,15 +184,16 @@ export function PlannerHeader({ activeStep = "define" }: PlannerHeaderProps) {
             onClick={handleSave}
             title="Save project"
           >
-            <Save className="size-[25px]" />
+            <Save className="size-[22px] sm:size-[25px]" />
           </Button>
           <Button
             variant="ghost"
             size="icon"
             className="h-10 w-10 text-[#111] hover:bg-[#f5f5f5] hover:text-[#0051BA]"
-            title="Close planner"
+            onClick={() => router.push("/")}
+            title="Exit planner to home"
           >
-            <X className="size-[25px]" />
+            <X className="size-[22px] sm:size-[25px]" />
           </Button>
         </div>
       </div>

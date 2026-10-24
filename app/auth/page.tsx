@@ -7,9 +7,9 @@ export default function AuthPage() {
   const router = useRouter()
 
   return (
-    <div className="flex min-h-screen bg-white">
-      {/* Gray Sidebar */}
-      <div className="w-1/3 bg-gray-500 flex flex-col items-center justify-center p-8">
+    <div className="flex flex-col md:flex-row min-h-screen bg-white">
+      {/* Sidebar */}
+      <div className="w-full md:w-1/3 bg-gray-900 text-white flex flex-col items-center justify-center p-8">
         <div className="text-center">
           <Link href="/" className="inline-block mb-8">
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

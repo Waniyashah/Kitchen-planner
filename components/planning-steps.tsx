@@ -62,12 +62,12 @@ export default function HomePage() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {kitchenTypes.map((type) => (
             <div
               key={type.id}
               onClick={() => handleLayoutSelect(type.value)}
-              className="flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+              className="flex flex-col items-center text-center p-4 rounded-xl border border-transparent hover:border-gray-200 hover:shadow-lg transition-all duration-300 cursor-pointer bg-white"
             >
               <div className="w-full mb-4 flex justify-center">
                 <img

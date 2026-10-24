@@ -1,6 +1,6 @@
 "use client"
-
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { usePlannerStore } from "@/lib/planner-store"
 import Image from "next/image"
@@ -9,6 +9,7 @@ import {
 } from 'lucide-react'
 
 export function MakeItYoursToolbar() {
+    const router = useRouter()
     const { room } = usePlannerStore()
     const [showCabinetsMenu, setShowCabinetsMenu] = useState(false)
     const [showAppliancesMenu, setShowAppliancesMenu] = useState(false)
@@ -168,7 +169,7 @@ export function MakeItYoursToolbar() {
     ]
 
     return (
-        <div className="relative flex h-24 items-center justify-between border-b border-[#dfdfdf] bg-white pl-0 pr-4">
+        <div className="relative flex h-24 items-center justify-between border-b border-[#dfdfdf] bg-white pl-0 pr-4 overflow-x-auto min-w-0 max-w-full">
 
             {/* LEFT SIDE */}
             <div className="flex items-center h-full pl-4">
@@ -455,7 +456,10 @@ export function MakeItYoursToolbar() {
                     </div>
                 </div>
 
-                <Button className="bg-[#0058a3] hover:bg-[#004f93] text-white px-8 h-10 rounded-full font-bold text-sm">
+                <Button
+                    onClick={() => router.push("/checkout")}
+                    className="bg-[#0058a3] hover:bg-[#004f93] text-white px-8 h-10 rounded-full font-bold text-sm cursor-pointer"
+                >
                     Continue
                 </Button>
             </div>

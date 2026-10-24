@@ -49,9 +49,9 @@ export default function QuestionCard({
         {/* Back Button */}
         <button
           onClick={handlePrev}
-          className="text-gray-700 hover:text-gray-900 flex items-center mb-8 font-medium text-sm"
+          className="text-gray-700 hover:text-gray-900 flex items-center mb-8 font-medium text-sm transition-colors"
         >
-          ← Start Page
+          {prevPath === "/" ? "← Start Page" : "← Previous Step"}
         </button>
 
         {/* Question Header */}

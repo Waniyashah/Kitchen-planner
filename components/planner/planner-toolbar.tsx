@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import Image from "next/image"
 import { usePlannerStore } from "@/lib/planner-store"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Info } from 'lucide-react'
 import { DefineSpacePanel } from "./panels/define-space-panel"
 import { ElementsPanel } from "./panels/elements-panel"
@@ -82,6 +83,7 @@ const WaterSupplyIcon = () => (
 // ... (previous imports)
 
 export function PlannerToolbar() {
+  const router = useRouter()
   const { setShowRoomShapeModal, setShowSearchPanel, setShowWaterSupplyModal, room, setRoom } = usePlannerStore()
   const [activePanel, setActivePanel] = useState<string | null>(null)
   const [activeCategory, setActiveCategory] = useState<string | null>(null) // For Elements Sidebar
@@ -129,7 +131,7 @@ export function PlannerToolbar() {
   // but for now relying on simple toggles as per prompt instructions.
 
   return (
-    <div className="relative flex h-24 items-center justify-between border-b border-[#dfdfdf] bg-white pl-0 pr-4">
+    <div className="relative flex h-24 items-center justify-between border-b border-[#dfdfdf] bg-white pl-0 pr-4 overflow-x-auto min-w-0 max-w-full">
 
       {/* LEFT SIDE */}
       <div className="flex items-center h-full">
@@ -300,7 +302,10 @@ export function PlannerToolbar() {
           </div>
         </div>
 
-        <Button className="bg-[#0058a3] hover:bg-[#004f93] text-white px-8 h-10 rounded-full font-bold text-sm">
+        <Button
+          onClick={() => router.push("/make-it-yours")}
+          className="bg-[#0058a3] hover:bg-[#004f93] text-white px-8 h-10 rounded-full font-bold text-sm cursor-pointer"
+        >
           Continue
         </Button>
       </div>
