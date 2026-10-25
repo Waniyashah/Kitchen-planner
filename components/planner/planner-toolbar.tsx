@@ -131,10 +131,10 @@ export function PlannerToolbar() {
   // but for now relying on simple toggles as per prompt instructions.
 
   return (
-    <div className="relative flex h-24 items-center justify-between border-b border-[#dfdfdf] bg-white pl-0 pr-4 overflow-x-auto min-w-0 max-w-full">
+    <div className="relative flex h-24 min-w-0 max-w-full items-center justify-between overflow-visible border-b border-[#dfdfdf] bg-white pl-0 pr-4">
 
       {/* LEFT SIDE */}
-      <div className="flex items-center h-full">
+      <div className="flex h-full min-w-0 flex-shrink-0 items-center">
 
         {/* Group 1: Room Shape + Define Space */}
         <div className="flex items-center gap-1 pl-2">
@@ -168,7 +168,7 @@ export function PlannerToolbar() {
         <div className="h-16 w-px bg-[#dfdfdf] mx-4" />
 
         {/* Group 2: Elements, Openings, Search, Water Supply */}
-        <div className="flex items-center gap-4">
+        <div className="flex flex-shrink-0 items-center gap-4">
 
           {/* ELEMENTS BUTTON + DROPDOWN wrapper */}
           <div className="relative">
@@ -293,7 +293,7 @@ export function PlannerToolbar() {
       </div>
 
       {/* RIGHT SIDE */}
-      <div className="flex items-center gap-8 pr-4">
+      <div className="flex flex-shrink-0 items-center gap-8 pr-4">
         <div className="flex flex-col items-end">
           <span className="text-sm">My Wasa kitchen</span>
           <div className="flex items-center gap-2">

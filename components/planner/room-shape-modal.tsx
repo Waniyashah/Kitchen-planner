@@ -160,10 +160,10 @@ export function RoomShapeModal() {
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-            <div className="relative w-full max-w-6xl rounded-lg bg-white shadow-xl max-h-[95vh] overflow-y-auto">
-                <div className="px-6 py-5">
-                    <h2 className="text-2xl font-bold text-[#111]">Choose Room Shape</h2>
-                    <p className="mt-1 text-sm text-[#484848]">
+            <div className="relative mx-0 w-full max-w-6xl rounded-lg bg-white shadow-xl max-h-[calc(100dvh-1rem)] overflow-y-auto sm:mx-4 sm:max-h-[95vh]">
+                <div className="px-5 py-5 sm:px-6">
+                    <h2 className="pr-12 text-2xl font-bold text-[#111]">Choose Room Shape</h2>
+                    <p className="mt-1 max-w-3xl text-sm text-[#484848]">
                         Select a Shape to change your Floor Plan to this new shape. You can adapt it later
                     </p>
                 </div>
@@ -175,10 +175,10 @@ export function RoomShapeModal() {
                     <X className="size-8" strokeWidth={2.5} />
                 </Button>
 
-                <div className="px-48 pb-12">
-                    <div className="mb-10">
+                <div className="px-5 pb-8 sm:px-8 sm:pb-12 lg:px-48">
+                    <div className="mb-8 sm:mb-10">
                         <h3 className="mb-4 text-base font-semibold text-[#111]">Enclosed Kitchen Space</h3>
-                        <div className="grid grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 sm:gap-6 lg:grid-cols-3">
                             {enclosedShapes.map((shape) => (
                                 <button
                                     key={shape.id}
@@ -205,7 +205,7 @@ export function RoomShapeModal() {
 
                     <div>
                         <h3 className="mb-4 text-base font-semibold text-[#111]">Open Kitchen Space</h3>
-                        <div className="grid grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 sm:gap-6 lg:grid-cols-3">
                             {openShapes.map((shape) => (
                                 <button
                                     key={shape.id}
@@ -216,7 +216,7 @@ export function RoomShapeModal() {
                                         }`}
                                 >
                                     <div
-                                        className={`relative h-28 w-full flex items-center justify-center ${selectedShape === shape.id ? "text-[#0051BA]" : "text-[#e0e0e0]"}`}
+                                        className={`relative h-24 w-full flex items-center justify-center sm:h-28 ${selectedShape === shape.id ? "text-[#0051BA]" : "text-[#e0e0e0]"}`}
                                     >
                                         {shape.preview}
                                     </div>

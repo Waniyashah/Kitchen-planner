@@ -169,10 +169,10 @@ export function MakeItYoursToolbar() {
     ]
 
     return (
-        <div className="relative flex h-24 items-center justify-between border-b border-[#dfdfdf] bg-white pl-0 pr-4 overflow-x-auto min-w-0 max-w-full">
+        <div className="relative flex h-24 min-w-0 max-w-full items-center justify-between overflow-visible border-b border-[#dfdfdf] bg-white pl-0 pr-4">
 
             {/* LEFT SIDE */}
-            <div className="flex items-center h-full pl-4">
+            <div className="flex h-full min-w-0 flex-shrink-0 items-center pl-4">
 
                 {/* Group 1: Cabinets & Appliances */}
                 <div className="flex items-center gap-1">
